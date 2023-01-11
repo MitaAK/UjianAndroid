@@ -42,6 +42,16 @@ public class MainActivity extends AppCompatActivity {
                     daftar_nama.add(nama_lengkap);
                     edNamaDepan.setText("");
                     edNamaBelakang.setText("");
+                    int umur = Integer.parseInt(((EditText) edUmur).getText().toString());
+                    if(umur <=10) {
+                        Toast.makeText(getApplicationContext(), "Status : Anak", Toast.LENGTH_SHORT).show();
+                    }else if (umur >=10 && umur <=20) {
+                        Toast.makeText(getApplicationContext(), "Status : Remaja", Toast.LENGTH_SHORT).show();
+                    }else if (umur >=20 && umur <=40) {
+                        Toast.makeText(getApplicationContext(), "Status : Dewasa", Toast.LENGTH_SHORT).show();
+                    }else if (umur <40) {
+                        Toast.makeText(getApplicationContext(), "Status : Tua", Toast.LENGTH_SHORT).show();
+                    }
                     intent_list.putStringArrayListExtra("daftar_nama", daftar_nama);
                     startActivity(intent_list);
                 }
