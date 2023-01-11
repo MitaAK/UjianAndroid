@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         EditText edNamaDepan = (EditText) findViewById(R.id.edNamaDepan);
         EditText edNamaBelakang = (EditText) findViewById(R.id.edNamaBelakang);
+        EditText edUmur = (EditText) findViewById(R.id.edUmur);
         Button btnSimpan = (Button) findViewById(R.id.btnSimpan);
 
         ArrayList<String> daftar_nama = new ArrayList<>();
@@ -31,17 +32,34 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String isian_nama_depan = edNamaDepan.getText().toString();
                 String isian_nama_belakang = edNamaBelakang.getText().toString();
+                String isian_umur = edUmur.getText().toString();
 
                 if(isian_nama_depan.isEmpty()){
                     Toast.makeText(getApplicationContext(), "Isian masih kosong", Toast.LENGTH_SHORT).show();
                 }else{
-                    String nama_lengkap = isian_nama_depan.concat(" ").concat(isian_nama_belakang);
+                    String nama_lengkap = isian_nama_depan.concat(" ").concat(isian_nama_belakang).concat(" ").concat(isian_umur);
                     daftar_nama.clear();
                     daftar_nama.add(nama_lengkap);
                     edNamaDepan.setText("");
                     edNamaBelakang.setText("");
+                    edUmur.setText("");
                     intent_list.putStringArrayListExtra("daftar_nama", daftar_nama);
                     startActivity(intent_list);
+                }
+
+                int umur = Integer.parseInt(((EditText) edUmur).getText().toString());
+                if(umur <=10) {
+                    edUmur.setText("Status : Anak");
+                    Toast.makeText(getApplicationContext(), "Status : Anak", Toast.LENGTH_SHORT).show();
+                }else if (umur >=10 && umur <=20) {
+                    edUmur.setText("Status : Remaja");
+                    Toast.makeText(getApplicationContext(), "Status : Remaja", Toast.LENGTH_SHORT).show();
+                }else if (umur >=20 && umur <=40) {
+                    edUmur.setText("Status : Dewasa");
+                    Toast.makeText(getApplicationContext(), "Status : Dewasa", Toast.LENGTH_SHORT).show();
+                }else if (umur <40) {
+                    edUmur.setText("Status : Tua");
+                    Toast.makeText(getApplicationContext(), "Status : Tua", Toast.LENGTH_SHORT).show();
                 }
             }
         });
