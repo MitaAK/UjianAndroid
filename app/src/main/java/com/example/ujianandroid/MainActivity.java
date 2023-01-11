@@ -37,29 +37,13 @@ public class MainActivity extends AppCompatActivity {
                 if(isian_nama_depan.isEmpty()){
                     Toast.makeText(getApplicationContext(), "Isian masih kosong", Toast.LENGTH_SHORT).show();
                 }else{
-                    String nama_lengkap = isian_nama_depan.concat(" ").concat(isian_nama_belakang).concat(" ").concat(isian_umur);
+                    String nama_lengkap = isian_nama_depan.concat(" ").concat(isian_nama_belakang).concat(",").concat(" ").concat(isian_umur);
                     daftar_nama.clear();
                     daftar_nama.add(nama_lengkap);
                     edNamaDepan.setText("");
                     edNamaBelakang.setText("");
-                    edUmur.setText("");
                     intent_list.putStringArrayListExtra("daftar_nama", daftar_nama);
                     startActivity(intent_list);
-                }
-
-                int umur = Integer.parseInt(((EditText) edUmur).getText().toString());
-                if(umur <=10) {
-                    edUmur.setText("Status : Anak");
-                    Toast.makeText(getApplicationContext(), "Status : Anak", Toast.LENGTH_SHORT).show();
-                }else if (umur >=10 && umur <=20) {
-                    edUmur.setText("Status : Remaja");
-                    Toast.makeText(getApplicationContext(), "Status : Remaja", Toast.LENGTH_SHORT).show();
-                }else if (umur >=20 && umur <=40) {
-                    edUmur.setText("Status : Dewasa");
-                    Toast.makeText(getApplicationContext(), "Status : Dewasa", Toast.LENGTH_SHORT).show();
-                }else if (umur <40) {
-                    edUmur.setText("Status : Tua");
-                    Toast.makeText(getApplicationContext(), "Status : Tua", Toast.LENGTH_SHORT).show();
                 }
             }
         });
